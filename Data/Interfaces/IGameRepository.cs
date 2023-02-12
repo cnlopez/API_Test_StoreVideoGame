@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ViewModels.Game;
 
-namespace Business.Interfaces
+namespace Data.Interfaces
 {
-    public interface IGameService
+    public interface IGameRepository
     {
-        Task<IEnumerable<VideogamesViewModel>> GetVideogames();
+        Task<IEnumerable<Videogames>> GetVideogames();
     }
 }

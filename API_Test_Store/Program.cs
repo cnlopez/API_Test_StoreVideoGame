@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 //using API_Test_Store.Business.Interfaces;
 //using API_Test_Store.Business.Services;
 using Data;
+using Data.Interfaces;
 using Business.Interfaces;
 using Business.Services;
 
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<API_Test_StoreContext>(options =>
 
 // Add services to the container.
 builder.Services.AddScoped<IGameService, GameService>();
+builder.Services.AddScoped<IGameRepository, GameRepository>();
 
 
 builder.Services.AddControllers();

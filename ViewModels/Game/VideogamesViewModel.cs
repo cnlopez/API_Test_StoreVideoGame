@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Models
+namespace ViewModels.Game
 {
-    public class Videogames
+    public class VideogamesViewModel
     {
         [Key]
         public int VideogameId { get; set; }
