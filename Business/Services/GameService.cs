@@ -1,4 +1,5 @@
-﻿using Business.Interfaces;
+﻿using AutoMapper;
+using Business.Interfaces;
 using Data;
 using Data.Interfaces;
 using Data.Models;
@@ -14,17 +15,13 @@ namespace Business.Services
 {
     public class GameService : IGameService
     {
-        private readonly API_Test_StoreContext _context;
         private readonly IGameRepository _gameRepository;
-        public GameService(API_Test_StoreContext context, IGameRepository gameRepository)
+        private readonly IMapper _mapper;
+        public GameService(IGameRepository gameRepository, IMapper mapper)
         {
-            _context = context;
             _gameRepository = gameRepository;
+            _mapper = mapper;
         }
-        //public async Task<IEnumerable<Videogames>> GetVideogames()
-        //{
-        //    return await _context.Videogames.ToListAsync();
-        //}
 
         public async Task<IEnumerable<VideogamesViewModel>> GetVideogames()
         {
@@ -41,6 +38,13 @@ namespace Business.Services
                     ConsoleId = game.ConsoleId
                 });
             }
+            return videoGamesViewModel;
+        }
+
+        public async Task<IEnumerable<VideogamesViewModel>> GetVideogamesMapper()
+        {
+            var getVideoGames = await _gameRepository.GetVideogamesDapper();
+            var videoGamesViewModel = _mapper.Map<IEnumerable<VideogamesViewModel>>(getVideoGames);
             return videoGamesViewModel;
         }
     }

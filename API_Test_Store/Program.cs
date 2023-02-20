@@ -1,12 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-//using API_Test_Store.Data;
-//using API_Test_Store.Business.Interfaces;
-//using API_Test_Store.Business.Services;
 using Data;
 using Data.Interfaces;
 using Business.Interfaces;
 using Business.Services;
+using AutoMapper;
+using Business.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<API_Test_StoreContext>(options =>
@@ -16,6 +15,12 @@ builder.Services.AddDbContext<API_Test_StoreContext>(options =>
 builder.Services.AddScoped<IGameService, GameService>();
 builder.Services.AddScoped<IGameRepository, GameRepository>();
 
+var mapperConfig = new MapperConfiguration(m =>
+{
+    m.AddProfile(new VideoGamesProfile());
+});
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

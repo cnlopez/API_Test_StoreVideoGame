@@ -10,5 +10,6 @@ namespace Data.Interfaces
     public interface IGameRepository
     {
         Task<IEnumerable<Videogames>> GetVideogames();
+        Task<IEnumerable<Videogames>> GetVideogamesDapper();
     }
 }

@@ -20,10 +20,17 @@ namespace API_Test_Store.Controllers
         }
 
         // GET: api/Videogames
-        [HttpGet]
+        [HttpGet("getvideogames")]
         public async Task<ActionResult> GetVideogames()
         {
             return Ok(await _gameService.GetVideogames());
+        }
+
+        // GET: api/Videogames
+        [HttpGet("getvideogamesmapper")]
+        public async Task<ActionResult> GetVideogamesMapper()
+        {
+            return Ok(await _gameService.GetVideogamesMapper());
         }
     }
 }

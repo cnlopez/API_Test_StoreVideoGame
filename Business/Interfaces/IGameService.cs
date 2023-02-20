@@ -11,5 +11,6 @@ namespace Business.Interfaces
     public interface IGameService
     {
         Task<IEnumerable<VideogamesViewModel>> GetVideogames();
+        Task<IEnumerable<VideogamesViewModel>> GetVideogamesMapper();
     }
 }

@@ -5,11 +5,13 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_Test_Store", "API_Test_Store\API_Test_Store.csproj", "{E05EFEC2-4902-4310-A67A-D453289D4FB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{63A3252B-EC6A-4DAE-B7AF-4E757CB9D096}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{63A3252B-EC6A-4DAE-B7AF-4E757CB9D096}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{BF519D92-27D4-417D-B696-2F0FB3D7CA05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{BF519D92-27D4-417D-B696-2F0FB3D7CA05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{935B1696-8A28-496F-86E8-C06D5799452A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModels", "ViewModels\ViewModels.csproj", "{935B1696-8A28-496F-86E8-C06D5799452A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{FD230D8F-80C8-47C5-A684-F3E002C780BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{63A3252B-EC6A-4DAE-B7AF-4E757CB9D096} = {FD230D8F-80C8-47C5-A684-F3E002C780BC}
+		{BF519D92-27D4-417D-B696-2F0FB3D7CA05} = {FD230D8F-80C8-47C5-A684-F3E002C780BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B042E15-F84F-47A4-9662-C90821661B08}

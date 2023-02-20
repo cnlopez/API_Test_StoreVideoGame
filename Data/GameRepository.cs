@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 
 namespace Data
 {
@@ -28,7 +29,7 @@ namespace Data
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand("spGetVideogames", sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                SqlDataReader rd = sqlCommand.ExecuteReader();
+                SqlDataReader rd = await sqlCommand.ExecuteReaderAsync();
                 while (rd.Read())
                 {
                     videoGames.Add(new Videogames
@@ -38,6 +39,16 @@ namespace Data
                         ConsoleId = rd.GetInt32("ConsoleId")
                     });
                 }
+            }
+            return videoGames;
+        }
+
+        public async Task<IEnumerable<Videogames>> GetVideogamesDapper()
+        {
+            var videoGames = Enumerable.Empty<Videogames>();
+            using (IDbConnection sqlConnection = new SqlConnection(_configuration.GetConnectionString("API_Test_StoreContext")))
+            {
+                videoGames = await sqlConnection.QueryAsync<Videogames>("spGetVideogames", commandType: CommandType.StoredProcedure);
             }
             return videoGames;
         }
