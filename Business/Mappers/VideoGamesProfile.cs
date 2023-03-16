@@ -19,6 +19,7 @@ namespace Business.Mappers
         public void DomainToViewModel()
         {
             CreateMap<Videogames, VideogamesViewModel>();
+            CreateMap<VideogamesViewModel, Videogames>();
         }
     }
 }

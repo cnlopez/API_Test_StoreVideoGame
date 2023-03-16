@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Business.Interfaces;
+using ViewModels.Game;
 
 namespace API_Test_Store.Controllers
 {
@@ -20,17 +21,38 @@ namespace API_Test_Store.Controllers
         }
 
         // GET: api/Videogames
-        [HttpGet("getvideogames")]
+        [HttpGet("videogames")]
         public async Task<ActionResult> GetVideogames()
         {
-            return Ok(await _gameService.GetVideogames());
+            return Ok(await _gameService.GetVideoGames());
         }
 
         // GET: api/Videogames
-        [HttpGet("getvideogamesmapper")]
+        [HttpGet("videogamesmapper")]
         public async Task<ActionResult> GetVideogamesMapper()
         {
-            return Ok(await _gameService.GetVideogamesMapper());
+            return Ok(await _gameService.GetVideoGamesMapper());
+        }
+
+        // GET: api/Videogames
+        [HttpGet("videogamemapper")]
+        public async Task<ActionResult> GetVideogamesMapper(int videoGameId)
+        {
+            return Ok(await _gameService.GetVideoGamesMapper(videoGameId));
+        }
+
+        // GET: api/Videogames
+        [HttpPost("savevideogamemapper")]
+        public async Task<ActionResult> SaveVideogamesMapper(VideogamesViewModel videoGame)
+        {
+            return Ok(await _gameService.SaveVideoGamesMapper(videoGame));
+        }
+
+        // GET: api/Videogames
+        [HttpPut("updatevideogamemapper")]
+        public async Task<ActionResult> UpdateVideogamesMapper(VideogamesViewModel videoGame)
+        {
+            return Ok(await _gameService.SaveVideoGamesMapper(videoGame));
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Data
             _configuration = configuration;
         }
 
-        public async Task<IEnumerable<Videogames>> GetVideogames()
+        public async Task<IEnumerable<Videogames>> GetVideoGames()
         {
             var videoGames = new List<Videogames>();
 
@@ -43,12 +43,32 @@ namespace Data
             return videoGames;
         }
 
-        public async Task<IEnumerable<Videogames>> GetVideogamesDapper()
+        public async Task<IEnumerable<Videogames>> GetVideoGamesDapper()
         {
             var videoGames = Enumerable.Empty<Videogames>();
             using (IDbConnection sqlConnection = new SqlConnection(_configuration.GetConnectionString("API_Test_StoreContext")))
             {
                 videoGames = await sqlConnection.QueryAsync<Videogames>("spGetVideogames", commandType: CommandType.StoredProcedure);
+            }
+            return videoGames;
+        }
+
+        public async Task<Videogames> GetVideoGamesDapper(int videoGameId)
+        {
+            var videoGames = new Videogames();
+            using (IDbConnection sqlConnection = new SqlConnection(_configuration.GetConnectionString("API_Test_StoreContext")))
+            {
+                videoGames = await sqlConnection.QueryFirstAsync<Videogames>("spGetVideogameById", new { @VideogameId = videoGameId }, commandType: CommandType.StoredProcedure);
+            }
+            return videoGames;
+        }
+
+        public async Task<int> SaveVideogamesMapper(Videogames videoGame)
+        {
+            var videoGames = 0;
+            using (IDbConnection sqlConnection = new SqlConnection(_configuration.GetConnectionString("API_Test_StoreContext")))
+            {
+                videoGames = await sqlConnection.QueryFirstAsync<int>("spSaveVideogame", new { videoGame.VideogameName, videoGame.ConsoleId }, commandType: CommandType.StoredProcedure);
             }
             return videoGames;
         }

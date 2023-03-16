@@ -23,9 +23,9 @@ namespace Business.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<VideogamesViewModel>> GetVideogames()
+        public async Task<IEnumerable<VideogamesViewModel>> GetVideoGames()
         {
-            var getVideoGames = _gameRepository.GetVideogames();
+            var getVideoGames = _gameRepository.GetVideoGames();
 
             var videoGamesViewModel = new List<VideogamesViewModel>();
 
@@ -41,11 +41,25 @@ namespace Business.Services
             return videoGamesViewModel;
         }
 
-        public async Task<IEnumerable<VideogamesViewModel>> GetVideogamesMapper()
+        public async Task<IEnumerable<VideogamesViewModel>> GetVideoGamesMapper()
         {
-            var getVideoGames = await _gameRepository.GetVideogamesDapper();
+            var getVideoGames = await _gameRepository.GetVideoGamesDapper();
             var videoGamesViewModel = _mapper.Map<IEnumerable<VideogamesViewModel>>(getVideoGames);
             return videoGamesViewModel;
+        }
+
+        public async Task<VideogamesViewModel> GetVideoGamesMapper(int videoGameId)
+        {
+            var getVideoGames = await _gameRepository.GetVideoGamesDapper(videoGameId);
+            var videoGamesViewModel = _mapper.Map<VideogamesViewModel>(getVideoGames);
+            return videoGamesViewModel;
+        }
+
+        public async Task<int> SaveVideoGamesMapper(VideogamesViewModel videoGame)
+        {
+            var videoGames = _mapper.Map<Videogames>(videoGame);
+            var getVideoGames = await _gameRepository.SaveVideogamesMapper(videoGames);
+            return getVideoGames;
         }
     }
 }
