@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModels.Game;
+using Extensions;
 
 namespace Business.Services
 {
@@ -52,6 +53,7 @@ namespace Business.Services
         {
             var getVideoGames = await _gameRepository.GetVideoGamesDapper(videoGameId);
             var videoGamesViewModel = _mapper.Map<VideogamesViewModel>(getVideoGames);
+            var gameName = videoGamesViewModel.GetVideoGameName();
             return videoGamesViewModel;
         }
 
