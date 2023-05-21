@@ -54,6 +54,9 @@ namespace Business.Services
             var getVideoGames = await _gameRepository.GetVideoGamesDapper(videoGameId);
             var videoGamesViewModel = _mapper.Map<VideogamesViewModel>(getVideoGames);
             var gameName = videoGamesViewModel.GetVideoGameName();
+            var type = VideoGameType.Action;
+
+
             return videoGamesViewModel;
         }
 
