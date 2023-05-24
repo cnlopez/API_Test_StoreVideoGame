@@ -21,35 +21,28 @@ namespace API_Test_Store.Controllers
         }
 
         // GET: api/Videogames
-        [HttpGet("videogames")]
-        public async Task<ActionResult> GetVideogames()
-        {
-            return Ok(await _gameService.GetVideoGames());
-        }
-
-        // GET: api/Videogames
-        [HttpGet("videogamesmapper")]
+        [HttpGet("video-games")]
         public async Task<ActionResult> GetVideogamesMapper()
         {
             return Ok(await _gameService.GetVideoGamesMapper());
         }
 
         // GET: api/Videogames
-        [HttpGet("videogamemapper")]
+        [HttpGet("video-games/{videoGameId:int}")]
         public async Task<ActionResult> GetVideogamesMapper(int videoGameId)
         {
             return Ok(await _gameService.GetVideoGamesMapper(videoGameId));
         }
 
         // GET: api/Videogames
-        [HttpPost("savevideogamemapper")]
+        [HttpPost("new-video-game")]
         public async Task<ActionResult> SaveVideogamesMapper(VideogamesViewModel videoGame)
         {
             return Ok(await _gameService.SaveVideoGamesMapper(videoGame));
         }
 
         // GET: api/Videogames
-        [HttpPut("updatevideogamemapper")]
+        [HttpPut("edit-video-game")]
         public async Task<ActionResult> UpdateVideogamesMapper(VideogamesViewModel videoGame)
         {
             return Ok(await _gameService.SaveVideoGamesMapper(videoGame));

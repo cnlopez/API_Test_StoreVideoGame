@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModels.Game;
+using ViewModels.Enums;
 using Extensions;
 
 namespace Business.Services
@@ -55,7 +56,6 @@ namespace Business.Services
             var videoGamesViewModel = _mapper.Map<VideogamesViewModel>(getVideoGames);
             var gameName = videoGamesViewModel.GetVideoGameName();
             var type = VideoGameType.Action;
-
 
             return videoGamesViewModel;
         }

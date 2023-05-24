@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Extensions
+namespace ViewModels.Enums
 {
     public enum VideoGameType
     {
