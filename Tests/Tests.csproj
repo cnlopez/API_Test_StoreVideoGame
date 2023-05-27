@@ -11,6 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Base\VideoGamesUnitTestSetup.cs">
+      <DependentUpon>VideoGamesUnitTest.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
   </ItemGroup>
 
