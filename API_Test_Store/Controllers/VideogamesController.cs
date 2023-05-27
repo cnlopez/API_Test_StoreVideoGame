@@ -34,16 +34,21 @@ namespace API_Test_Store.Controllers
             return Ok(await _gameService.GetVideoGamesMapper(videoGameId));
         }
 
-        // GET: api/Videogames
-        [HttpPost("new-video-game")]
+        // POST: api/Videogames
+        [HttpPost("video-games")]
         public async Task<ActionResult> SaveVideogamesMapper(VideogamesViewModel videoGame)
         {
             return Ok(await _gameService.SaveVideoGamesMapper(videoGame));
         }
 
-        // GET: api/Videogames
-        [HttpPut("edit-video-game")]
-        public async Task<ActionResult> UpdateVideogamesMapper(VideogamesViewModel videoGame)
+        /// <summary>
+        /// Update an existing video game
+        /// </summary>
+        /// <param name="videoGameId"></param>
+        /// <param name="videoGame"></param>
+        /// <returns></returns>
+        [HttpPut("video-games/{videoGameId:int}")]
+        public async Task<ActionResult> UpdateVideogamesMapper(int videoGameId, VideogamesViewModel videoGame)
         {
             return Ok(await _gameService.SaveVideoGamesMapper(videoGame));
         }
