@@ -72,5 +72,22 @@ namespace Data
             }
             return videoGames;
         }
+
+        public async Task<string> DeleteVideoGame(int videoGameId)
+        {
+            try
+            {
+                using (IDbConnection sqlConnection = new SqlConnection(_configuration.GetConnectionString("API_Test_StoreContext")))
+                {
+                    await sqlConnection.ExecuteAsync("spDeleteVideoGame", new { @VideogameId = videoGameId }, commandType: CommandType.StoredProcedure);
+                }
+                return "Done";
+            }
+            catch (Exception)
+            {
+                //throw new Exception("message");
+                return "An error occurred";
+            }
+        }
     }
 }

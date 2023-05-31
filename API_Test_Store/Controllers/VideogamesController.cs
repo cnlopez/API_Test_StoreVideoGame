@@ -57,10 +57,18 @@ namespace API_Test_Store.Controllers
         [Route("video-games/{videoGameId:int}"), HttpPut]
         public async Task<ActionResult> UpdateVideogamesMapper(int videoGameId, VideogamesViewModel videoGame)
         {
-            return Ok(await _gameService.SaveVideoGamesMapper(videoGame));
+            return Ok(await _gameService.UpdateVideoGames(videoGame));
         }
 
-
-        //Create Delete
+        /// <summary>
+        /// Update an existing video game
+        /// </summary>
+        /// <param name="videoGameId"></param>
+        /// <returns></returns>
+        [Route("video-games/{videoGameId:int}"), HttpDelete]
+        public async Task<ActionResult> DeleteVideogame(int videoGameId)
+        {
+            return Ok(await _gameService.DeleteVideoGame(videoGameId));
+        }
     }
 }

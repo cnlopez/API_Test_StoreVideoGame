@@ -66,5 +66,18 @@ namespace Business.Services
             var getVideoGames = await _gameRepository.SaveVideogamesMapper(videoGames);
             return getVideoGames;
         }
+
+        public async Task<int> UpdateVideoGames(VideogamesViewModel videoGame)
+        {
+            var videoGames = _mapper.Map<Videogames>(videoGame);
+            var getVideoGames = await _gameRepository.SaveVideogamesMapper(videoGames);
+            return getVideoGames;
+        }
+
+        public async Task<string> DeleteVideoGame(int videoGameId)
+        {
+            var deleteVideoGames = await _gameRepository.DeleteVideoGame(videoGameId);
+            return deleteVideoGames;
+        }
     }
 }

@@ -14,5 +14,7 @@ namespace Business.Interfaces
         Task<IEnumerable<VideogamesViewModel>> GetVideoGamesMapper();
         Task<VideogamesViewModel> GetVideoGamesMapper(int videoGameId);
         Task<int> SaveVideoGamesMapper(VideogamesViewModel videoGame);
+        Task<int> UpdateVideoGames(VideogamesViewModel videoGame);
+        Task<string> DeleteVideoGame(int videoGameId);
     }
 }
