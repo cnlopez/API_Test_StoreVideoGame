@@ -70,7 +70,7 @@ namespace Business.Services
         public async Task<int> UpdateVideoGames(VideogamesViewModel videoGame)
         {
             var videoGames = _mapper.Map<Videogames>(videoGame);
-            var getVideoGames = await _gameRepository.SaveVideogamesMapper(videoGames);
+            var getVideoGames = await _gameRepository.UpdateVideogame(videoGames);
             return getVideoGames;
         }
 

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Moq;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Tests
         [Test]
         public async Task GetGetVideoGamesMapper_ReturnSuccess()
         {
+            GameRepositoryMock.Setup(x=>x.GetVideoGamesDapper()).ReturnsAsync(VideogamesModel);
             var response = await GameService.GetVideoGamesMapper();
             Assert.IsNotNull(response);
         }

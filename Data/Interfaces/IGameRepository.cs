@@ -13,6 +13,7 @@ namespace Data.Interfaces
         Task<IEnumerable<Videogames>> GetVideoGamesDapper();
         Task<Videogames> GetVideoGamesDapper(int videoGameId);
         Task<int> SaveVideogamesMapper(Videogames videoGame);
+        Task<int> UpdateVideogame(Videogames videoGame);
         Task<string> DeleteVideoGame(int videoGameId);
     }
 }

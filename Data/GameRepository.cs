@@ -73,6 +73,21 @@ namespace Data
             return videoGames;
         }
 
+        public async Task<int> UpdateVideogame(Videogames videoGame)
+        {
+            var videoGames = 0;
+            using (IDbConnection sqlConnection = new SqlConnection(_configuration.GetConnectionString("API_Test_StoreContext")))
+            {
+                videoGames = await sqlConnection.QueryFirstAsync<int>("spUpdateVideogame", 
+                                                new { videoGame.VideogameId, 
+                                                      videoGame.VideogameName,
+                                                      videoGame.ConsoleId,
+                                                      videoGame.VideoGameTypeId
+                                                }, commandType: CommandType.StoredProcedure);
+            }
+            return videoGames;
+        }
+
         public async Task<string> DeleteVideoGame(int videoGameId)
         {
             try

@@ -1,0 +1,20 @@
+[
+  {
+    "videogameId": 1,
+    "videogameName": "Crash Bandicoot 2",
+    "consoleId": 1,
+    "videoGameTypeId": 0
+  },
+  {
+    "videogameId": 2,
+    "videogameName": "Halo 2",
+    "consoleId": 2,
+    "videoGameTypeId": 4
+  },
+  {
+    "videogameId": 3,
+    "videogameName": "Resident Evil",
+    "consoleId": 1,
+    "videoGameTypeId": 0
+  }
+]
