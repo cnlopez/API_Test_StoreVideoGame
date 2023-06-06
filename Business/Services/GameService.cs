@@ -31,7 +31,7 @@ namespace Business.Services
 
             var videoGamesViewModel = new List<VideogamesViewModel>();
 
-            foreach (var game in await getVideoGames) 
+            foreach (var game in await getVideoGames)
             {
                 videoGamesViewModel.Add(new VideogamesViewModel
                 {

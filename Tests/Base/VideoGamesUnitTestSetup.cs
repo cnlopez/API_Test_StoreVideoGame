@@ -8,6 +8,7 @@ using Moq;
 using Data.Interfaces;
 using NUnit.Framework;
 using System.Text.Json;
+using Business.Services;
 
 namespace Tests.Base
 {
@@ -19,6 +20,7 @@ namespace Tests.Base
         public virtual void Init()
         {
             GameRepositoryMock = new Mock<IGameRepository>();
+            GameService = new GameService(GameRepositoryMock.Object, Mapper);
         }
 
         [SetUp]
