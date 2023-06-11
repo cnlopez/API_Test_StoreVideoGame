@@ -1,15 +1,5 @@
-﻿using AutoMapper;
-using Business.Interfaces;
-using Data;
+﻿using Business.Interfaces;
 using Data.Interfaces;
-using Data.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ViewModels.Game;
 using ViewModels.Enums;
 using Extensions;
 
@@ -27,32 +17,14 @@ namespace Business.Services
 
         public async Task<IEnumerable<VideogamesViewModel>> GetVideoGames()
         {
-            var getVideoGames = _gameRepository.GetVideoGames();
-
-            var videoGamesViewModel = new List<VideogamesViewModel>();
-
-            foreach (var game in await getVideoGames)
-            {
-                videoGamesViewModel.Add(new VideogamesViewModel
-                {
-                    VideogameId = game.VideogameId,
-                    VideogameName = game.VideogameName,
-                    ConsoleId = game.ConsoleId
-                });
-            }
-            return videoGamesViewModel;
-        }
-
-        public async Task<IEnumerable<VideogamesViewModel>> GetVideoGamesMapper()
-        {
-            var getVideoGames = await _gameRepository.GetVideoGamesDapper();
+            var getVideoGames = await _gameRepository.GetVideoGames();
             var videoGamesViewModel = _mapper.Map<IEnumerable<VideogamesViewModel>>(getVideoGames);
             return videoGamesViewModel;
         }
 
-        public async Task<VideogamesViewModel> GetVideoGamesMapper(int videoGameId)
+        public async Task<VideogamesViewModel> GetVideoGame(int videoGameId)
         {
-            var getVideoGames = await _gameRepository.GetVideoGamesDapper(videoGameId);
+            var getVideoGames = await _gameRepository.GetVideoGame(videoGameId);
             var videoGamesViewModel = _mapper.Map<VideogamesViewModel>(getVideoGames);
             var gameName = videoGamesViewModel.GetVideoGameName();
             var type = VideoGameType.Action;
@@ -60,10 +32,10 @@ namespace Business.Services
             return videoGamesViewModel;
         }
 
-        public async Task<int> SaveVideoGamesMapper(VideogamesViewModel videoGame)
+        public async Task<int> SaveVideoGames(VideogamesViewModel videoGame)
         {
             var videoGames = _mapper.Map<Videogames>(videoGame);
-            var getVideoGames = await _gameRepository.SaveVideogamesMapper(videoGames);
+            var getVideoGames = await _gameRepository.SaveVideogames(videoGames);
             return getVideoGames;
         }
 

@@ -23,7 +23,7 @@ namespace API_Test_Store.Controllers
         [Route("video-games"), HttpGet]
         public async Task<ActionResult> GetVideogamesMapper()
         {
-            return Ok(await _gameService.GetVideoGamesMapper());
+            return Ok(await _gameService.GetVideoGames());
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace API_Test_Store.Controllers
         [Route("video-games/{videoGameId:int}"), HttpGet]
         public async Task<ActionResult> GetVideogamesMapper(int videoGameId)
         {
-            return Ok(await _gameService.GetVideoGamesMapper(videoGameId));
+            return Ok(await _gameService.GetVideoGame(videoGameId));
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace API_Test_Store.Controllers
         [Route("video-games"), HttpPost]
         public async Task<ActionResult> SaveVideogamesMapper(VideogamesViewModel videoGame)
         {
-            return Ok(await _gameService.SaveVideoGamesMapper(videoGame));
+            return Ok(await _gameService.SaveVideoGames(videoGame));
         }
 
         /// <summary>

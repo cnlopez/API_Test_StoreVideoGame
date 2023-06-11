@@ -12,10 +12,10 @@ namespace Tests
     public class GetVideoGamesMapperTest : VideoGamesUnitTest
     {
         [Test]
-        public async Task GetGetVideoGamesMapper_ReturnSuccess()
+        public async Task GetGetVideoGames_ReturnSuccess()
         {
-            GameRepositoryMock.Setup(x=>x.GetVideoGamesDapper()).ReturnsAsync(VideogamesModel);
-            var response = await GameService.GetVideoGamesMapper();
+            GameRepositoryMock.Setup(x=>x.GetVideoGames()).ReturnsAsync(VideogamesModel);
+            var response = await GameService.GetVideoGames();
             Assert.IsNotNull(response);
         }
     }
